@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    input {
+      width: 40px;
+      text-align: center;
+    }
+
+    .feedback {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .fraction {
+      margin-top: 5px;
+      font-size: 18px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    .img-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    img {
+      width: 500px;
+      max-width: 100%;
+      border: 1px solid #999;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+
+    hr {
+      margin: 60px 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 6px 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Lista 03 - Sistemas Numéricos</h2>
+
+<p>
+  🔽 Navegue entre os problemas:
+  <a href="#problema1">Problema 01</a>
+  <a href="#problema2">Problema 02</a>
+  <a href="#problema3">Problema 03</a>
+</p>
+
+<hr>
+
+<h2 id="problema1">Problema 01</h2>
+<p>
+  Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, diferenciando os assentos já vendidos, por uma cor mais escura, dos assentos ainda disponíveis.
+</p>
+<p>
+  A razão entre o número de assentos já vendidos e o total de assentos desse ônibus, no instante considerado na Figura 01, é:
+</p>
+
+<div class="img-container">
+  <img src="FIGURA_ONIBUS.png" alt="Figura 01 - Assentos do Ônibus">
+</div>
+
+<h3>Solução</h3>
+<p>
+  O total de assentos no ônibus é 
+  <input onchange="check(this, 4)"> × <input onchange="check(this, 2)"> + 
+  <input onchange="check(this, 3)"> × <input onchange="check(this, 2)"> = 
+  (<input onchange="check(this, 8)"> + <input onchange="check(this, 6)">) × 2 = 
+  <input onchange="check(this, 28)">
+</p>
+
+<p>Na Figura 1 o número de assentos escuros é:</p>
+<ul>
+  <li>1ª linha: <input onchange="check(this, 2)"> escuros</li>
+  <li>2ª linha: <input onchange="check(this, 2)"> escuros</li>
+  <li>3ª linha: <input onchange="check(this, 2)"> escuros</li>
+  <li>4ª linha: <input onchange="check(this, 2)"> escuros</li>
+</ul>
+
+<p>Assentos escuros: <input onchange="check(this, 8)"> <br>
+Razão: <input onchange="check(this, '8/28')"> <br>
+Assentos claros: <input onchange="check(this, 20)">
+</p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div><div class="fraction"><span>16</span><span class="bar"></span><span>42</span></div></div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div><div class="fraction"><span>16</span><span class="bar"></span><span>25</span></div></div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div><div class="fraction"><span>26</span><span class="bar"></span><span>42</span></div></div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div><div class="fraction"><span>42</span><span class="bar"></span><span>26</span></div></div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div><div class="fraction"><span>42</span><span class="bar"></span><span>16</span></div></div>
+
+<div id="message"></div>
+
+</body>
+</html>
