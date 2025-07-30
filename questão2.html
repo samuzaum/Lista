@@ -173,17 +173,20 @@
 
 <script>
   function check(input, correct) {
-    const value = input.value.trim().replace(',', '.');
-    if (Number(value) === correct) {
-      input.style.backgroundColor = "#c6f6c6";
-      input.nextElementSibling?.remove();
-      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
-    } else {
-      input.style.backgroundColor = "#fdd";
-      input.nextElementSibling?.remove();
-      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
-    }
+  const value = input.value.trim().replace(',', '.');
+
+  // Remove qualquer feedback anterior próximo
+  const next = input.nextElementSibling;
+  if (next && next.classList.contains("feedback")) next.remove();
+
+  if (Number(value) === correct) {
+    input.style.backgroundColor = "#c6f6c6";
+    input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+  } else {
+    input.style.backgroundColor = "#fdd";
+    input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
   }
+}
 
   function checkText(input, expectedList) {
     const userText = input.value.trim().toLowerCase();
