@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input {
+      width: 40px;
+      text-align: center;
+    }
+    .feedback {
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    .option {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .fraction {
+      margin-top: 5px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .fraction .numerator {
+      display: block;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    .fraction .denominator {
+      display: block;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .img-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    img {
+      width: 500px;
+      max-width: 100%;
+      border: 1px solid #999;
+    }
+    a {
+  text-decoration: none;
+  background-color: #6c9ba4;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 4px;
+  display: inline-block;
+}
+a:hover {
+  background-color: #55808d;
+}
+  </style>
+</head>
+<body>
+    <p>
+        <a href="questão2.html">🔹 Ir para Problema 02</a> |
+        <a href="questão3.html">🔹 Ir para Problema 03</a>
+      </p>
+<h2>Problema 01</h2>
+<p>
+  Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, diferenciando os assentos já vendidos, por uma cor mais escura, dos assentos ainda disponíveis.  
+  A empresa monitora permanentemente o número de assentos já vendidos e compara-o com o número total de assentos do ônibus para avaliar a necessidade de alocação de veículos extras.  
+  <br><br>
+  Na Figura abaixo tem-se a informação dos assentos já vendidos e dos ainda disponíveis em um determinado instante.  
+  A razão entre o número de assentos já vendidos e o total de assentos desse ônibus, no instante considerado na Figura 01, é:
+</p>
+
+<div class="img-container">
+  <img src="FIGURA_ONIBUS.png" alt="Figura 01 - Assentos do Ônibus">
+</div>
+
+<h2>Solução do problema 01:</h2>
+<p>Preencha as lacunas corretamente para resolver o problema.</p>
+
+<p>
+  O total de assento no ônibus é 
+  <input id="q1" onchange="check(this, 4)"> × 
+  <input id="q2" onchange="check(this, 2)"> + 
+  <input id="q3" onchange="check(this, 3)"> × 
+  <input id="q4" onchange="check(this, 2)"> = 
+  ( <input id="q5" onchange="check(this, 8)"> + 
+  <input id="q6" onchange="check(this, 6)"> ) × 2 = 
+  <input id="q7" onchange="check(this, 28)">
+</p>
+
+<p>Na Figura 1 o número de assentos escuros é contado como segue:</p>
+<ul>
+  <li>na 1a linha: <input id="q8" onchange="check(this, 2)"> assentos escuros.</li>
+  <li>na 2a linha: <input id="q9" onchange="check(this, 2)"> assentos escuros.</li>
+  <li>na 3a linha: <input id="q10" onchange="check(this, 2)"> assentos escuros.</li>
+  <li>na 4a linha: <input id="q11" onchange="check(this, 2)"> assentos escuros.</li>
+</ul>
+
+<p>
+  Existem <input id="q12" onchange="check(this, 8)"> assentos escuros. 
+  Portanto, a razão entre o número de assentos já vendidos e o total de assentos é 
+  <input id="q13" onchange="check(this, '8/28')">.
+</p>
+
+<p>obs: O total de assentos claros é <input id="q14" onchange="check(this, 20)">.</p>
+
+<div class="option" onclick="checkAnswer('A')">
+  <div class="circle">A</div>
+  <div class="fraction">
+    <span class="numerator">16</span>
+    <span class="bar"></span>
+    <span class="denominator">42</span>
+  </div>
+</div>
+
+<div class="option" onclick="checkAnswer('B')">
+  <div class="circle">B</div>
+  <div class="fraction">
+    <span class="numerator">16</span>
+    <span class="bar"></span>
+    <span class="denominator">25</span>
+  </div>
+</div>
+
+<div class="option" onclick="checkAnswer('C')">
+  <div class="circle">C</div>
+  <div class="fraction">
+    <span class="numerator">26</span>
+    <span class="bar"></span>
+    <span class="denominator">42</span>
+  </div>
+</div>
+
+<div class="option" onclick="checkAnswer('D')">
+  <div class="circle">D</div>
+  <div class="fraction">
+    <span class="numerator">42</span>
+    <span class="bar"></span>
+    <span class="denominator">26</span>
+  </div>
+</div>
+
+<div class="option" onclick="checkAnswer('E')">
+  <div class="circle">E</div>
+  <div class="fraction">
+    <span class="numerator">42</span>
+    <span class="bar"></span>
+    <span class="denominator">16</span>
+  </div>
+</div>
+
+<div id="message"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim();
+    if (typeof correct === 'number') {
+      if (Number(value) === correct) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.nextElementSibling?.remove();
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.value = '';
+        input.style.backgroundColor = "#fdd";
+        input.nextElementSibling?.remove();
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    } else {
+      const normalized = value.replace(/\s/g, '');
+      if (normalized === correct) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.nextElementSibling?.remove();
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.value = '';
+        input.style.backgroundColor = "#fdd";
+        input.nextElementSibling?.remove();
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'A';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A alternativa A está certa.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não é correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

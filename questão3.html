@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+    a {
+    text-decoration: none;
+    background-color: #6c9ba4;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 4px;
+    display: inline-block;
+    }
+    a:hover {
+    background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+    <p>
+        <a href="index.html">🔹 Ir para Problema 01</a> |
+        <a href="questão2.html">🔹 Ir para Problema 02</a>
+      </p>
+<h3>Problema 03:</h3>
+
+<p>
+  O estado de qualquer substância gasosa é determinado pela medida de três grandezas: o volume (V), a pressão (P) e a temperatura (T) dessa substância. Para os chamados gases “ideais”, o valor do quociente (PV)/T é sempre constante.
+  <br><br>
+  Considere um reservatório que está cheio de um gás ideal. Sem vazar o gás, realiza-se uma compressão do reservatório, reduzindo seu volume à metade. Ao mesmo tempo, uma fonte de calor faz a temperatura do gás ser quadruplicada.
+  <br><br>
+  Considere P₀ e P₁, respectivamente, os valores das pressões do gás no reservatório antes e depois do procedimento descrito.
+</p>
+
+<h4>Solução:</h4>
+
+<p>
+  A equação geral dos gases ideais é:
+  <br>
+  <span class="fraction">
+    <span><input onchange="check(this, 'P0V0')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, 'T0')"></span>
+  </span>
+  =
+  <span class="fraction">
+    <span><input onchange="check(this, 'P1V1')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, 'T1')"></span>
+  </span>
+</p>
+
+<p><strong>Dados:</strong></p>
+<p>
+  V₁ = <input onchange="check(this, 'V0/2')"> &nbsp;&nbsp;
+  T₁ = <input onchange="check(this, '4T0')">
+</p>
+
+<p><strong>Substituindo:</strong></p>
+<p>
+  <span class="fraction">
+    <span><input onchange="check(this, 'P0V0')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, 'T0')"></span>
+  </span>
+  =
+  <span class="fraction">
+    <span><input onchange="check(this, 'P1V0')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '8T0')"></span>
+  </span>
+</p>
+
+<p>
+  Eliminando V₀ e T₀ dos dois lados:
+  <br>
+  <input onchange="check(this, 'P0')"> =
+  <span class="fraction">
+    <span><input onchange="check(this, 'P1')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '8')"></span>
+  </span>
+  &nbsp;&nbsp; ⇒ &nbsp;&nbsp;
+  P₁ = <input onchange="check(this, '8P0')">
+</p>
+
+
+<p><strong>A relação entre P₀ e P₁ é:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> P₁ = P₀ / 8</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> P₁ = P₀ / 2</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> P₁ = P₀</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> P₁ = 2P₀</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> P₁ = 8P₀</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = typeof correct === 'string' ? correct.toLowerCase() : correct;
+
+    input.nextElementSibling?.remove();
+    if (value === expected.toString()) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'E';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! P₁ = 8P₀ de acordo com a equação dos gases ideais.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não corresponde à relação correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>
