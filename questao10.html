@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao9.html">🔹 Ir para Problema 09</a> |
+  <a href="questao11.html">🔹 Ir para Problema 11</a>
+</p>
+
+<h3>Problema 10:</h3>
+
+<p>
+  A figura mostra os preços da gasolina no Brasil e nos Estados Unidos (EUA), feita a conversão para reais, considerando o preço total de venda ao consumidor (abaixo dos nomes dos países) e os valores das parcelas correspondentes à refinaria, aos tributos e à distribuição e revenda.
+</p>
+
+<p>
+  Note que, considerando apenas a parte correspondente à refinaria, o preço da gasolina vendida no Brasil é inferior ao preço cobrado nos Estados Unidos, mas os tributos, a distribuição e a revenda aumentam o preço final de venda nos postos brasileiros.
+</p>
+
+<p>
+  Suponha que fosse tomada a decisão de se diminuir o preço final de venda nos postos brasileiros, sem alterar a parcela do preço da gasolina vendida na refinaria, de modo que o preço final se iguale ao cobrado nos postos dos Estados Unidos.
+</p>
+
+<p>
+  O percentual mais aproximado de redução dos valores em tributos, distribuição e revenda seria:
+</p>
+
+<h4>Solução:</h4>
+
+<p><strong>Valores da figura:</strong></p>
+<ul>
+  <li>Preço final Brasil: R$ <input onchange="check(this, '2.80')"></li>
+  <li>Refinaria (Brasil): R$ <input onchange="check(this, '1.37')"></li>
+  <li>Tributos: R$ <input onchange="check(this, '1.00')"></li>
+  <li>Distribuição e revenda: R$ <input onchange="check(this, '0.43')"></li>
+</ul>
+
+<p><strong>Total a ser reduzido:</strong></p>
+<p>
+  T<sub>original</sub> = 1,00 + 0,43 = R$ <input onchange="check(this, '1.43')">
+</p>
+
+<p><strong>Novo preço final desejado:</strong></p>
+<p>
+  P<sub>novo</sub> = R$ <input onchange="check(this, '2.00')">
+</p>
+
+<p><strong>Como a parcela da refinaria permanece fixa:</strong></p>
+<p>
+  T<sub>novo</sub> = 2,00 − 1,37 = R$ <input onchange="check(this, '0.63')">
+</p>
+
+<p><strong>Redução absoluta:</strong></p>
+<p>
+  ΔT = 1,43 − 0,63 = R$ <input onchange="check(this, '0.80')">
+</p>
+
+<p><strong>Cálculo da redução percentual:</strong></p>
+<p>
+  <span class="fraction">
+    <span><input onchange="check(this, '0.80')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '1.43')"></span>
+  </span> × 100 =
+  <input onchange="check(this, '55.94')"> %
+</p>
+
+<p>
+  (arredondando: aproximadamente <input onchange="check(this, '56')">%)
+</p>
+
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 29</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 44</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 56</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 63</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 80</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(',', '.').toLowerCase();
+    const expected = correct.toLowerCase();
+    input.nextElementSibling?.remove();
+    if (value === expected) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'D';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A redução de 2 em 3 reais equivale a aproximadamente 66,6%.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não corresponde ao percentual de redução correto.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

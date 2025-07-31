@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao8.html">🔹 Ir para Problema 08</a> |
+  <a href="questao10.html">🔹 Ir para Problema 10</a>
+</p>
+
+<h3>Problema 09:</h3>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<h3>Problema 09:</h3>
+
+<p>
+  José, Carlos e Paulo devem transportar, em suas bicicletas, uma certa quantidade de laranjas. Decidiram dividir o trajeto a ser percorrido em duas partes, sendo que, ao final da primeira parte, eles redistribuiriam a quantidade de laranjas que cada um carregava, dependendo do cansaço de cada um.
+</p>
+
+<p>
+  Na primeira parte do trajeto, José, Carlos e Paulo dividiram as laranjas na proporção 6 : 5 : 4, respectivamente. Na segunda parte do trajeto, José, Carlos e Paulo dividiram as laranjas na proporção 4 : 4 : 2.
+</p>
+
+<p>
+  Sabendo-se que um deles levou 50 laranjas a mais na segunda parte do trajeto, qual a quantidade de laranjas que José, Carlos e Paulo, nessa ordem, transportaram na segunda parte do trajeto?
+</p>
+
+<h4>Solução:</h4>
+
+<p>
+  Seja <strong>M</strong> a quantidade total de laranjas. Então:
+</p>
+
+<p><strong>1ª parte:</strong></p>
+<ul>
+  <li>José: <span class="fraction"><span>6</span><span class="bar"></span><span>15</span></span>M = <input onchange="check(this, '2/5')">M</li>
+  <li>Carlos: <span class="fraction"><span>5</span><span class="bar"></span><span>15</span></span>M = <input onchange="check(this, '1/3')">M</li>
+  <li>Paulo: <span class="fraction"><span>4</span><span class="bar"></span><span>15</span></span>M = <input onchange="check(this, '4/15')">M</li>
+</ul>
+
+<p><strong>2ª parte:</strong></p>
+<ul>
+  <li>José: <span class="fraction"><span>4</span><span class="bar"></span><span>10</span></span>M = <input onchange="check(this, '2/5')">M</li>
+  <li>Carlos: <span class="fraction"><span>4</span><span class="bar"></span><span>10</span></span>M = <input onchange="check(this, '2/5')">M</li>
+  <li>Paulo: <span class="fraction"><span>2</span><span class="bar"></span><span>10</span></span>M = <input onchange="check(this, '1/5')">M</li>
+</ul>
+
+<p><strong>Diferenças entre 2ª e 1ª parte:</strong></p>
+<ul>
+  <li>José: <input onchange="check(this, '2/5')">M − <input onchange="check(this, '2/5')">M = <input onchange="check(this, '0')">M</li>
+  <li>Carlos: <input onchange="check(this, '2/5')">M − <input onchange="check(this, '1/3')">M = <input onchange="check(this, '1/15')">M</li>
+  <li>Paulo: <input onchange="check(this, '1/5')">M − <input onchange="check(this, '4/15')">M = <input onchange="check(this, '-1/15')">M</li>
+</ul>
+
+<p>
+  Segundo o enunciado, alguém levou 50 laranjas a mais: <input onchange="check(this, '1/15')">M = 50 ⇒ M = <input onchange="check(this, '750')">
+</p>
+
+<p><strong>Aplicando M = 750 na 2ª parte:</strong></p>
+<ul>
+  <li>José: <span class="fraction"><span>2</span><span class="bar"></span><span>5</span></span> × 750 = <input onchange="check(this, '300')"></li>
+  <li>Carlos: <span class="fraction"><span>2</span><span class="bar"></span><span>5</span></span> × 750 = <input onchange="check(this, '300')"></li>
+  <li>Paulo: <span class="fraction"><span>1</span><span class="bar"></span><span>5</span></span> × 750 = <input onchange="check(this, '150')"></li>
+</ul>
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 600, 550, 350</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 300, 300, 150</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 300, 250, 200</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 200, 200, 100</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 100, 100, 50</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = correct.toLowerCase();
+
+    input.nextElementSibling?.remove();
+    if (value === expected) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'B';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! Essa é a distribuição correta na 2ª parte do trajeto.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não representa a distribuição correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

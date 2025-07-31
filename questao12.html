@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 50px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 2px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao11.html">🔹 Ir para Problema 11</a> |
+  <a href="questao13.html">🔹 Ir para Problema 13</a>
+</p>
+
+<h3>Problema 12:</h3>
+
+<p>
+  Na aferição de um novo semáforo, os tempos são ajustados de modo que, em cada ciclo completo (verde–amarelo–vermelho), a luz amarela permaneça acesa por 5 segundos, e o tempo em que a luz verde permanece acesa é igual a 
+  <span class="fraction">
+    <span>2</span>
+    <span class="bar"></span>
+    <span>3</span>
+  </span>
+  do tempo em que a luz vermelha fique acesa.
+</p>
+
+<p>
+  A luz verde fica acesa, em cada ciclo, durante <strong>X</strong> segundos e cada ciclo dura <strong>Y</strong> segundos.
+</p>
+
+<p><strong>Qual a expressão que representa a relação entre X e Y?</strong></p>
+
+<h4>Solução:</h4>
+
+<ul>
+  <li>Luz amarela: 5 s</li>
+  <li>Luz verde: X s</li>
+  <li>Luz vermelha: R s</li>
+</ul>
+
+<p>
+  Se 
+  <span class="fraction">
+    <span>X</span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, 'R')"></span>
+  </span> 
+  = 
+  <span class="fraction">
+    <span>2</span>
+    <span class="bar"></span>
+    <span>3</span>
+  </span>, 
+  então R =
+  <span class="fraction">
+    <span><input onchange="check(this, '3')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '2')"></span>
+  </span> · X
+</p>
+
+<p>
+  Então Y = X + 5 + R = X + 5 + 
+  <span class="fraction">
+    <span><input onchange="check(this, '3')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '2')"></span>
+  </span> · X
+</p>
+
+<p>
+  Y = 
+  <span class="fraction">
+    <span><input onchange="check(this, '5')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '2')"></span>
+  </span> · X + 5
+</p>
+
+<p>
+  Multiplicando por 2:  
+  2Y = <input onchange="check(this, '5X')"> + <input onchange="check(this, '10')">
+</p>
+
+<p>
+  Passando tudo para o mesmo lado: 
+  <input onchange="check(this, '5X')"> − 
+  <input onchange="check(this, '2Y')"> + 
+  <input onchange="check(this, '10')"> = 0
+</p>
+
+<h4>Assinale a alternativa correta:</h4>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 5X − 3Y + 15 = 0</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 5X − 2Y + 10 = 0</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 3X − 3Y + 15 = 0</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 3X − 2Y + 15 = 0</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 3X − 2Y + 10 = 0</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toUpperCase();
+    const expected = correct.toUpperCase();
+    input.nextElementSibling?.remove();
+    if (value === expected) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'B';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A equação correta é 5X − 2Y + 10 = 0.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não representa a relação correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao5.html">🔹 Ir para Problema 05</a> |
+  <a href="questao7.html">🔹 Ir para Problema 07</a>
+</p>
+
+<h3>Problema 06:</h3>
+
+<p>
+  Um produtor de milho utiliza uma área de 160 hectares para as suas atividades agrícolas. Essa área é dividida em duas partes: uma de 40 hectares, com maior produtividade, e outra, de 120 hectares, com menor produtividade.
+  <br><br>
+  A produtividade é dada pela razão entre a produção (em toneladas) e a área cultivada. Sabe-se que a área de 40 hectares tem produtividade igual a 2,5 vezes à da outra.
+  <br><br>
+  Esse fazendeiro pretende aumentar sua produção total em 15%, aumentando o tamanho da sua propriedade. Para tanto, pretende comprar uma parte de uma fazenda vizinha, que possui a mesma produtividade da parte de 120 hectares de suas terras.
+</p>
+
+<p>Qual é a área mínima, em hectare, que o produtor precisará comprar?</p>
+
+<h4>Solução:</h4>
+
+<p>Seja <input onchange="check(this, 'x')"> a produtividade da parte de 120 ha.</p>
+<p>
+  Então, a produtividade da parte de 40 ha é:
+  <input onchange="check(this, '2.5x')">
+</p>
+
+<p>
+  A produção atual total é:
+  120 × <input onchange="check(this, 'x')"> + 40 × <input onchange="check(this, '2.5x')"> =
+  <input onchange="check(this, '120x')"> + <input onchange="check(this, '100x')"> =
+  <input onchange="check(this, '220x')">
+</p>
+
+<p>
+  Deseja-se aumentar a produção total em 15%, ou seja:
+  <input onchange="check(this, '220x')"> × 1,15 = <input onchange="check(this, '253x')">
+</p>
+
+<p>
+  Seja <input onchange="check(this, 'a')"> a área que será comprada, com produtividade <input onchange="check(this, 'x')">.
+</p>
+
+<p>
+  Nova produção total:
+  <input onchange="check(this, '220x')"> + <input onchange="check(this, 'ax')"> =
+  <input onchange="check(this, '253x')">
+</p>
+
+<p>
+  Subtraindo os dois lados:
+  <input onchange="check(this, 'ax')"> = <input onchange="check(this, '33x')"> ⇒
+  <input onchange="check(this, 'a')"> = <input onchange="check(this, '33')">
+</p>
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 36</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 33</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 27</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 24</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 21</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = typeof correct === 'string' ? correct.toLowerCase() : correct;
+
+    input.nextElementSibling?.remove();
+    if (value === expected.toString()) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'B';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A área a ser comprada deve ser 33 ha para atingir o aumento de 15%.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

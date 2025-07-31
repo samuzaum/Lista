@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao4.html">🔹 Ir para Problema 04</a> |
+  <a href="questao6.html">🔹 Ir para Problema 06</a>
+</p>
+
+<h3>Problema 05:</h3>
+
+<p>
+  A cor de uma estrela tem relação com a temperatura em sua superfície. Estrelas não muito quentes (cerca de 3 000 K) nos parecem avermelhadas. Já as estrelas amarelas, como o Sol, possuem temperatura em torno dos 6 000 K; as mais quentes são brancas ou azuis porque sua temperatura fica acima dos 10 000 K.
+</p>
+
+<p>
+  A tabela apresenta uma classificação espectral e outros dados para as estrelas dessas classes: luminosidade, massa e raio, tomando o Sol como unidade. Se tomarmos uma estrela que tenha temperatura 5 vezes maior que a temperatura do Sol, qual será a ordem de grandeza de sua luminosidade?
+</p>
+
+<h4>Solução:</h4>
+
+<p>
+  A luminosidade de uma estrela é proporcional a R²·T⁴. Supondo que o raio permaneça constante:
+</p>
+
+<p>
+  <span class="fraction">
+    <span><input onchange="check(this, 'L')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, 'L☉')"></span>
+  </span>
+  =
+  (<input onchange="check(this, '5')">)<sup>4</sup> =
+  <input onchange="check(this, '625')">
+</p>
+
+<p>
+  No entanto, a tabela mostra que uma estrela da classe B0, com temperatura aproximadamente 5 vezes a do Sol, tem luminosidade:
+</p>
+
+<p>
+  L = <input onchange="check(this, '20000')"> · L☉
+</p>
+
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 20 000 vezes a luminosidade do Sol</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 28 000 vezes a luminosidade do Sol</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 28 850 vezes a luminosidade do Sol</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 30 000 vezes a luminosidade do Sol</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 50 000 vezes a luminosidade do Sol</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = typeof correct === 'string' ? correct.toLowerCase() : correct;
+
+    input.nextElementSibling?.remove();
+    if (value === expected.toString()) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'A';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A classe B0 tem luminosidade cerca de 20 mil vezes a do Sol.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não corresponde à ordem correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

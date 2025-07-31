@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao6.html">🔹 Ir para Problema 06</a> |
+  <a href="questao8.html">🔹 Ir para Problema 08</a>
+</p>
+
+<h3>Problema 07:</h3>
+
+<p>
+  Para realizar um voo entre duas cidades que distam 2.000 km uma da outra, uma companhia aérea utilizava um modelo de aeronave A, capaz de transportar até 200 passageiros.
+  Quando uma dessas aeronaves está lotada de passageiros, o consumo de combustível é de 0,02 litro por quilômetro e por passageiro.
+  <br><br>
+  Essa companhia resolveu trocar o modelo de aeronave A pelo modelo de aeronave B, que é capaz de transportar 10% de passageiros a mais do que o modelo A, mas consumindo 10% menos combustível por quilômetro e por passageiro.
+</p>
+
+<p>
+  A quantidade de combustível consumida pelo modelo de aeronave B, em relação à do modelo de aeronave A, em um voo lotado entre as duas cidades, é:
+</p>
+
+<h4>Solução:</h4>
+
+<p><strong>Modelo A:</strong></p>
+<p>
+  Passageiros: <input onchange="check(this, '200')"> &nbsp;&nbsp;
+  Consumo por passageiro: <input onchange="check(this, '0.02')"> &nbsp;&nbsp;
+  Distância: <input onchange="check(this, '2000')">
+</p>
+
+<p>
+  Consumo total:
+  <input onchange="check(this, '200')"> × <input onchange="check(this, '0.02')"> × <input onchange="check(this, '2000')"> =
+  <input onchange="check(this, '8000')"> L
+</p>
+
+<p><strong>Modelo B:</strong></p>
+<p>
+  Passageiros: <input onchange="check(this, '220')"> &nbsp;&nbsp;
+  Consumo por passageiro: <input onchange="check(this, '0.018')">
+</p>
+
+<p>
+  Consumo total:
+  <input onchange="check(this, '220')"> × <input onchange="check(this, '0.018')"> × <input onchange="check(this, '2000')"> =
+  <input onchange="check(this, '7920')"> L
+</p>
+
+<p>
+  Variação percentual:
+  <span class="fraction">
+    <span><input onchange="check(this, '8000-7920')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '8000')"></span>
+  </span>
+  =
+  <input onchange="check(this, '0.01')"> = <input onchange="check(this, '1')">% menor
+</p>
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 10% menor</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 1% menor</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> igual</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 1% maior</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 11% maior</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = typeof correct === 'string' ? correct.toLowerCase() : correct;
+
+    input.nextElementSibling?.remove();
+    if (value === expected.toString()) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'B';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A economia de combustível foi de 1% no voo lotado.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não corresponde à economia calculada.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

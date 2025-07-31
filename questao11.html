@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fraction {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+
+    .fraction .bar {
+      display: block;
+      border-top: 1.5px solid black;
+      width: 100%;
+      margin: 1px 0;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao10.html">🔹 Ir para Problema 10</a> |
+  <a href="questao12.html">🔹 Ir para Problema 12</a>
+</p>
+
+<h3>Problema 11:</h3>
+
+<p>
+  O governo decidiu reduzir de 25% para 20% o teor de álcool anidro misturado à gasolina vendida nos postos do país.
+  Considere que a média de desempenho, ou seja, a quantidade de quilômetros (km) que um carro anda com 1 litro de combustível, é diretamente proporcional à porcentagem de gasolina presente no combustível, e que a média de desempenho de um carro antes da decisão do governo era de 13,5 km/L.
+</p>
+
+<p>
+  Nas condições do texto, qual será a estimativa da média de desempenho após a redução de álcool anidro no combustível?
+</p>
+
+<h4>Solução:</h4>
+
+<p>
+  Antes da redução:
+  <br>
+  Gasolina = <input onchange="check(this, '75')">% 
+</p>
+
+<p>
+  Depois da redução:
+  <br>
+  Gasolina = <input onchange="check(this, '80')">%
+</p>
+
+<p>
+  A eficiência é diretamente proporcional à porcentagem de gasolina:
+  <br>
+  <span class="fraction">
+    <span><input onchange="check(this, '80')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '75')"></span>
+  </span> × 13,5 = 
+  <span class="fraction">
+    <span><input onchange="check(this, '16')"></span>
+    <span class="bar"></span>
+    <span><input onchange="check(this, '15')"></span>
+  </span> × 13,5
+</p>
+
+<p>
+  Resultado: 1,0666... × 13,5 = 
+  <input onchange="check(this, '14.4')"> km/L
+</p>
+
+<p><strong>Assinale a alternativa correta:</strong></p>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 10,80 km/L</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 12,65 km/L</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 12,82 km/L</div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 14,15 km/L</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 14,40 km/L</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(',', '.').toLowerCase();
+    const expected = correct.toLowerCase();
+    input.nextElementSibling?.remove();
+    if (value === expected) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'E';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! A nova média de desempenho é 14,4 km/L.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não corresponde à média correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>

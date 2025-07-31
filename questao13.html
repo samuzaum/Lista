@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 03</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 70px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+<p>
+  <a href="questao12.html">🔹 Ir para Problema 12</a> |
+  <a href="questao14.html">🔹 Ir para Problema 14</a>
+</p>
+
+<h3>Problema 13:</h3>
+
+<p>
+  O matemático americano Eduardo Kasner pediu ao filho que desse um nome a um número muito grande, que consistia do algarismo 1 seguido de 100 zeros. Seu filho batizou o número de <strong>gugol</strong>. Mais tarde, o mesmo matemático criou um número que apelidou de <strong>gugolplex</strong>, que consistia em 10 elevado a um gugol.
+</p>
+
+<p><strong>Quantos algarismos tem um gugolplex?</strong></p>
+
+<h4>Solução:</h4>
+
+<p>Um <strong>gugol</strong> é:</p>
+<p>
+  10<sup><input onchange="check(this, '100')"></sup>
+  <span style="margin-left: 10px;">(ou seja, o número 1 seguido de 100 zeros)</span>
+</p>
+
+<p>Um <strong>gugolplex</strong> é:</p>
+<p>
+  10<sup>10<sup><input onchange="check(this, '100')"></sup></sup>
+</p>
+
+<p>
+  A quantidade de algarismos de um número N é dada por:<br>
+  ⌊ log<sub>10</sub> N ⌋ + 1
+</p>
+
+<p>
+  log<sub>10</sub>(10<sup>10<sup>100</sup></sup>) = 
+  <input onchange="check(this, '10^100')">
+</p>
+
+<p>
+  Número de algarismos = 
+  <input onchange="check(this, '10^100')"> + 
+  <input onchange="check(this, '1')">
+</p>
+
+<h4>Assinale a alternativa correta:</h4>
+
+<div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 100</div>
+<div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 101</div>
+<div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 10<sup>100</sup></div>
+<div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 10<sup>100</sup> + 1</div>
+<div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 10<sup>1000</sup> + 1</div>
+
+<div id="message" class="feedback"></div>
+
+<script>
+  function check(input, correct) {
+    const value = input.value.trim().replace(/\s/g, '').toLowerCase();
+    const expected = correct.toLowerCase();
+    input.nextElementSibling?.remove();
+    if (value === expected) {
+      input.style.backgroundColor = "#c6f6c6";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+    } else {
+      input.style.backgroundColor = "#fdd";
+      input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+    }
+  }
+
+  function checkAnswer(letter) {
+    const correct = 'D';
+    const message = document.getElementById('message');
+    if (letter === correct) {
+      message.textContent = 'Correto! O número de algarismos é 10^100 + 1.';
+      message.style.color = 'green';
+    } else {
+      message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+      message.style.color = 'red';
+    }
+  }
+</script>
+
+</body>
+</html>
