@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 04</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    .fraction {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .fraction .bar {
+      border-top: 1px solid black;
+      margin: 2px 0;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao23.html">🔹 Ir para Problema 23</a> |
+    <a href="questao25.html">🔹 Ir para Problema 25</a>
+  </p>
+
+  <h3>Problema 24:</h3>
+  <p>
+    Durante uma festa de colégio, um grupo de alunos organizou uma rifa. Oitenta alunos faltaram à festa e não participaram da rifa. Entre os que compareceram, alguns compraram três bilhetes, 45 compraram dois bilhetes e muitos compraram apenas um. O total de alunos que comprou um único bilhete era 20% do número total de bilhetes vendidos, e o total de bilhetes vendidos excedeu em 33 o número total de alunos do colégio.<br><br>
+    Quantos alunos compraram somente um bilhete?
+  </p>
+
+  <h4>Solução 23:</h4>
+  <p><strong>Sejam:</strong></p>
+  <ul>
+    <li>x = número de alunos que compraram 1 bilhete</li>
+    <li>y = <input onchange="check(this, '45')"> = número de alunos que compraram 2 bilhetes</li>
+    <li>z = número de alunos que compraram 3 bilhetes</li>
+  </ul>
+
+  <p><strong>Total de bilhetes vendidos:</strong></p>
+  <p>
+    T = 1·x + 2·<input onchange="check(this, '45')"> + 3·z = x + <input onchange="check(this, '90')"> + 3z
+  </p>
+
+  <p><strong>Total de alunos do colégio:</strong> 80 faltaram, e os que compraram são x + 45 + z:</p>
+  <p>
+    Total de alunos = 80 + x + 45 + z = x + z + <input onchange="check(this, '125')">
+  </p>
+
+  <p><strong>Segundo o enunciado:</strong></p>
+  <p>
+    T = total de alunos + 33 ⇒ x + 90 + 3z = x + z + <input onchange="check(this, '125')"> + <input onchange="check(this, '33')">
+  </p>
+
+  <p><strong>Eliminando x dos dois lados:</strong></p>
+  <p>
+    90 + 3z = z + <input onchange="check(this, '158')"> ⇒ 2z = <input onchange="check(this, '68')"> ⇒ z = <input onchange="check(this, '34')">
+  </p>
+
+  <p><strong>Substituindo em T:</strong></p>
+  <p>
+    T = x + 90 + 3·<input onchange="check(this, '34')"> = x + <input onchange="check(this, '192')">
+  </p>
+
+  <p><strong>Sabemos também que:</strong></p>
+  <p>
+    x = 0,2(x + 192) ⇒ x = 
+    <span class="fraction"><span>1</span><span class="bar"></span><span>5</span></span>
+    (x + 192) ⇒ 5x = x + <input onchange="check(this, '192')"> ⇒ 4x = <input onchange="check(this, '192')"> ⇒ x = <input onchange="check(this, '48')">
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 34</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 42</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 47</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 48</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 79</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      const expected = correct.toString().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (value === expected) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'D';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! A resposta é 48.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

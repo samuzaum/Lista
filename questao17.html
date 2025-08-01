@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Questão 17</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao16.html">🔹 Ir para Problema 16</a> |
+    <a href="questao18.html">🔹 Ir para Problema 18</a>
+  </p>
+
+  <h3>Problema 17:</h3>
+  <p>
+    Um atleta iniciou seu treinamento visando as competições de fim de ano. Seu treinamento consiste em cinco tipos diferentes de treinos: treino <strong>T₁</strong>, treino <strong>T₂</strong>, treino <strong>T₃</strong>, treino <strong>T₄</strong> e treino <strong>T₅</strong>.<br><br>
+
+    A sequência dos treinos durante os dias é a seguinte:
+  </p>
+
+<table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; text-align: center;">
+  <tr style="background-color: #f0f0f0;">
+    <th>Dia</th>
+    <td>1º</td>
+    <td>2º</td>
+    <td>3º</td>
+    <td>4º</td>
+    <td>5º</td>
+    <td>6º</td>
+    <td>7º</td>
+    <td>8º</td>
+    <td>9º</td>
+    <td>10º</td>
+    <td>11º</td>
+    <td>12º</td>
+    <td>13º</td>
+  </tr>
+  <tr>
+    <th>Treino</th>
+    <td>T₁</td>
+    <td>R</td>
+    <td>T₂</td>
+    <td>R</td>
+    <td>T₃</td>
+    <td>R</td>
+    <td>T₄</td>
+    <td>R</td>
+    <td>T₅</td>
+    <td>R</td>
+    <td>R</td>
+    <td>T₁</td>
+    <td>R</td>
+  </tr>
+</table>
+
+
+  <p>
+    Após completar esse ciclo de 13 dias, o atleta repete a sequência.<br>
+    Ao final de 24 semanas (com 7 dias cada), ele terá treinado por 168 dias.<br><br>
+    Qual a sequência de treinos da <strong>24ª semana</strong> (ou seja, dos dias 162 a 168)?
+  </p>
+
+  <h4>Solução:</h4>
+
+  <p>
+    Vamos calcular os restos de cada dia módulo 13:
+  </p>
+
+  <ul>
+    <li>162 mod 13 = <input onchange="check(this, '6')"> → <strong>R</strong></li>
+    <li>163 mod 13 = <input onchange="check(this, '7')"> → <strong>T₄</strong></li>
+    <li>164 mod 13 = <input onchange="check(this, '8')"> → <strong>R</strong></li>
+    <li>165 mod 13 = <input onchange="check(this, '9')"> → <strong>T₅</strong></li>
+    <li>166 mod 13 = <input onchange="check(this, '10')"> → <strong>R</strong></li>
+    <li>167 mod 13 = <input onchange="check(this, '11')"> → <strong>R</strong></li>
+    <li>168 mod 13 = <input onchange="check(this, '12')"> → <strong>T₁</strong></li>
+  </ul>
+
+  <p>
+    Assim, a sequência da 24ª semana é:
+    <strong>R, T₄, R, T₅, R, R, T₁</strong>
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">A</div> T₃, R, T₄, R, R, T₅</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> R, T₃, R, T₄, R, R, T₅</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> R, T₄, R, T₅, T₁</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> R, T₅, R, T₁, R, R</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> R, T₅, R, T₁, R, R, T₂</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim();
+      input.nextElementSibling?.remove();
+      if (value === correct) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'B';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! A sequência da 24ª semana é: R, T₄, R, T₅, R, R, T₁';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Questão 16</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 70px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao15.html">🔹 Ir para Problema 15</a> |
+    <a href="questao17.html">🔹 Ir para Problema 17</a>
+  </p>
+
+  <h3>Problema 16:</h3>
+  <p>
+    Uma fábrica utiliza sua frota particular de caminhões para distribuir as <strong>90 toneladas</strong> de sua produção semanal.<br>
+    Todos os caminhões são do mesmo modelo. Para aumentar a vida útil da frota, a fábrica adotou a política de <strong>reduzir a capacidade máxima de carga de cada caminhão em meia tonelada</strong>.<br>
+    Com isso, o número de caminhões necessários aumentou <strong>em 6 unidades</strong>.<br><br>
+    <strong>Qual é o número atual de caminhões</strong> que essa fábrica usa para transportar a produção semanal?
+  </p>
+
+  <h4>Solução:</h4>
+  <p>
+    Seja \( x \) a carga original por caminhão. O número de caminhões inicialmente era:
+    <br> \( n = \frac{90}{x} \)
+    <br> Após a redução para \( x - 0{,}5 \), o número passou a ser:
+    <br> \( \frac{90}{x - 0{,}5} = \frac{90}{x} + 6 \)
+  </p>
+
+  <p>
+    Multiplicando ambos os lados por \( x(x - 0{,}5) \), obtemos:
+    <br> <input onchange="check(this, '90x')"> = <input onchange="check(this, '45x')"> + <input onchange="check(this, '6x^2')"> - <input onchange="check(this, '3x')">
+  </p>
+
+  <p>
+    Reorganizando a equação:
+    <br> <input onchange="check(this, '6x^2')"> - <input onchange="check(this, '48x')"> + <input onchange="check(this, '-90x')"> = 0
+  </p>
+
+  <p>
+    Resolvendo a equação quadrática, temos uma raiz válida:
+    <br> \( x = \) <input onchange="check(this, '2.5')"> toneladas
+  </p>
+
+  <p>
+    Assim, número de caminhões atual: \( \frac{90}{2{,}5} = \) <input onchange="check(this, '36')"> caminhões
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 36</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 30</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 19</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 16</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 10</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (parseFloat(value) === parseFloat(correct)) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'A';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! O número atual de caminhões é 36.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

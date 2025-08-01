@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 04</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao24.html">🔹 Ir para Problema 24</a> |
+    <a href="questao26.html">🔹 Ir para Problema 26</a>
+  </p>
+
+  <h3>Problema 25:</h3>
+  <p>
+    Um arquiteto está reformando uma casa. De modo a contribuir com o meio ambiente, decide reaproveitar tábuas de madeira retiradas da casa. Ele dispõe de 40 tábuas de 540 cm, 30 de 810 cm e 10 de 1 080 cm, todas de mesma largura e espessura. Ele pediu a um carpinteiro que cortasse as tábuas em pedaços de mesmo comprimento, sem deixar sobras, e de modo que as novas peças ficassem com o maior tamanho possível, mas de comprimento <strong>menor que 2 m</strong>.<br><br>
+    Atendendo ao pedido do arquiteto, o carpinteiro deverá produzir:
+  </p>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 105 peças</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 120 peças</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 210 peças</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 243 peças</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 420 peças</div>
+
+  <h4>Solução 24:</h4>
+
+  <p><strong>Comprimentos das tábuas disponíveis:</strong></p>
+  <ul>
+    <li>40 tábuas de 540 cm</li>
+    <li>30 tábuas de 810 cm</li>
+    <li>10 tábuas de 1080 cm</li>
+  </ul>
+
+  <p><strong>Objetivo:</strong> cortar todas em pedaços <u>iguais</u>, <u>sem sobras</u>, e <u>menores que 200 cm</u>.</p>
+
+  <p><strong>Etapa 1:</strong> determinar o maior divisor comum:</p>
+  <p>
+    MDC(540, 810, 1080)<br><br>
+    540 = 2² · 3³ · 5<br>
+    810 = 2 · 3⁴ · 5<br>
+    1080 = 2³ · 3³ · 5<br><br>
+    MDC = 2¹ · 3³ · 5 = <input onchange="check(this, '270')">
+  </p>
+
+  <p>Mas 270 &gt; 200. Precisamos do maior divisor comum &lt; 200.</p>
+  <p>Vamos testar os divisores de 270 menores que 200:</p>
+  <p>
+    Divisores comuns: 90<br>
+    Verificamos: <input onchange="check(this, '90')"> divide 540, 810 e 1080 ⇒ Serve!
+  </p>
+
+  <h4>Etapa 2:</h4>
+  <p>Calcular quantos pedaços de 90 cm saem de cada tábua:</p>
+  <p>
+    540 ÷ 90 = <input onchange="check(this, '6')"> ⇒ 40 tábuas ⇒ <input onchange="check(this, '240')"> peças<br>
+    810 ÷ 90 = <input onchange="check(this, '9')"> ⇒ 30 tábuas ⇒ <input onchange="check(this, '270')"> peças<br>
+    1080 ÷ 90 = <input onchange="check(this, '12')"> ⇒ 10 tábuas ⇒ <input onchange="check(this, '120')"> peças<br><br>
+    Total: <input onchange="check(this, '240')"> + <input onchange="check(this, '270')"> + <input onchange="check(this, '120')"> = <input onchange="check(this, '630')"> peças
+  </p>
+
+  <p><em>Essa opção não está entre as alternativas. Vamos tentar 30 cm:</em></p>
+
+  <p>Verificando:</p>
+  <p>
+    540 ÷ 30 = <input onchange="check(this, '18')"> ⇒ 40 tábuas ⇒ <input onchange="check(this, '720')"><br>
+    810 ÷ 30 = <input onchange="check(this, '27')"> ⇒ 30 tábuas ⇒ <input onchange="check(this, '810')"><br>
+    1080 ÷ 30 = <input onchange="check(this, '36')"> ⇒ 10 tábuas ⇒ <input onchange="check(this, '360')"><br><br>
+    Total: <input onchange="check(this, '720')"> + <input onchange="check(this, '810')"> + <input onchange="check(this, '360')"> = <input onchange="check(this, '1890')">
+  </p>
+
+  <p>(Ainda não é resposta. Vamos tentar próximo possível de 200.)</p>
+
+  <p><strong>Vamos tentar:</strong> <input onchange="check(this, '135')"> cm</p>
+  <p>
+    540 ÷ 135 = <input onchange="check(this, '4')"> ⇒ 40 tábuas ⇒ <input onchange="check(this, '160')"><br>
+    810 ÷ 135 = <input onchange="check(this, '6')"> ⇒ 30 tábuas ⇒ <input onchange="check(this, '180')"><br>
+    1080 ÷ 135 = <input onchange="check(this, '8')"> ⇒ 10 tábuas ⇒ <input onchange="check(this, '80')"><br><br>
+    Total: <input onchange="check(this, '160')"> + <input onchange="check(this, '180')"> + <input onchange="check(this, '80')"> = <input onchange="check(this, '420')">
+  </p>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      const expected = correct.toString().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (value === expected) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'E';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! A resposta é 420 peças.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

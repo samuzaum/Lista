@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Questão 23</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 70px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao22.html">🔹 Ir para Problema 22</a> |
+    <a href="questao24.html">🔹 Ir para Problema 24</a>
+  </p>
+
+  <h3>Problema 23:</h3>
+  <p>
+    Durante uma festa de colégio, um grupo de alunos organizou uma rifa. Oitenta alunos faltaram à festa e não participaram da rifa. Entre os que compareceram, alguns compraram três bilhetes, 45 compraram dois bilhetes e muitos compraram apenas um.
+  </p>
+  <p>
+    O total de alunos que comprou um único bilhete era 20% do número total de bilhetes vendidos, e o total de bilhetes vendidos excedeu em 33 o número total de alunos do colégio.
+  </p>
+
+  <p><strong>Quantos alunos compraram somente um bilhete?</strong></p>
+
+  <h4>Solução:</h4>
+
+  <p>
+    Seja \( x \) o número de alunos que compraram 1 bilhete.
+    <br>
+    Total de bilhetes vendidos: \( x + 2 \cdot 45 + 3y \), onde \( y \) é o número de alunos que compraram 3 bilhetes.
+  </p>
+
+  <p>
+    O enunciado informa que:
+    <br> - Alunos com 1 bilhete representam 20% dos bilhetes:
+    <br> \( x = 0,2 \cdot (x + 90 + 3y) \)
+  </p>
+
+  <p>
+    Multiplicando tudo por 5:
+    <br>
+    \( 5x = x + 90 + 3y \) →
+    <input onchange="check(this, '4x')"> = <input onchange="check(this, '90')"> + <input onchange="check(this, '3y')">
+  </p>
+
+  <p>
+    Agora, total de alunos:
+    <br>
+    \( x + 45 + y + 80 = \) <input onchange="check(this, 'x+125+y')">
+    <br>
+    Bilhetes = \( x + 90 + 3y \)
+    <br>
+    A diferença é de 33:
+    <br>
+    \( x + 90 + 3y = x + 125 + y + 33 \)
+    <br>
+    Cancelando \( x \): <input onchange="check(this, '90')"> + <input onchange="check(this, '3y')"> = <input onchange="check(this, '158')"> + <input onchange="check(this, 'y')">
+  </p>
+
+  <p>
+    Reduzindo:
+    <input onchange="check(this, '2y')"> = <input onchange="check(this, '68')"> → \( y = \) <input onchange="check(this, '34')">
+  </p>
+
+  <p>
+    Substituindo de volta:
+    <br>
+    \( 3y = 102 \) → \( 4x = 192 \) → \( x = \) <input onchange="check(this, '48')">
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 34</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 42</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 47</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 48</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 79</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (value === correct) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'D';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! Foram 48 alunos que compraram somente um bilhete.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

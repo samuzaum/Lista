@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Questão 20</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 80px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao19.html">🔹 Ir para Problema 19</a> |
+    <a href="questao21.html">🔹 Ir para Problema 21</a>
+  </p>
+
+  <h3>Problema 20:</h3>
+  <p>
+    Um produtor de café contratou uma empresa de consultoria para avaliar as produções de suas diversas fazendas. No relatório entregue consta que a variância das produtividades das fazendas foi igual a 9 216 kg²/ha². Esse produtor precisa apresentar essa informação, mas em outra unidade de produtividade: sacas/ha. Ele sabe que a saca de café tem 60 kg, mas tem dúvidas em determinar o valor da variância em sacas²/ha².
+  </p>
+  <p>
+    <strong>A variância das produtividades das fazendas de café expressa em sacas²/ha² é:</strong>
+  </p>
+
+  <h4>Solução:</h4>
+  <p>
+    Variância original: <input onchange="check(this, '9216')"> kg²/ha²
+    <br>
+    1 saca = 60 kg → 1 saca² = <input onchange="check(this, '3600')"> kg²
+    <br>
+    Para converter a variância de kg²/ha² para sacas²/ha², dividimos:
+    <br>
+    <input onchange="check(this, '9216')"> ÷ <input onchange="check(this, '3600')"> = <input onchange="check(this, '2.56')"> sacas²/ha²
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 153,60</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 12,39</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 6,55</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 2,56</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 1,60</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (parseFloat(value) === parseFloat(correct)) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'D';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! A variância em sacas²/ha² é 2,56.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

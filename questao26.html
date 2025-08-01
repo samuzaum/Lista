@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Lista 04</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao25.html">🔹 Ir para Problema 25</a> |
+    <a href="questao27.html">🔹 Ir para Problema 27</a>
+  </p>
+
+  <h3>Problema 26:</h3>
+  <p>
+    Uma indústria produz malhas de proteção solar para serem aplicadas em vidros, de modo a diminuir a passagem de luz, a partir de fitas plásticas entrelaçadas perpendicularmente. Nas direções vertical e horizontal, são aplicadas fitas de 1 mm de largura, tal que a distância entre elas é de <strong>(d − 1)</strong> mm, conforme a figura. O material utilizado não permite a passagem da luz; somente o raio que atinge as lacunas deixadas pelo entrelaçamento consegue transpor essa proteção.<br><br>
+    A <i>taxa de cobertura</i> do vidro é o percentual da área da região coberta pelas fitas da malha, que são colocadas paralelamente às bordas do vidro.<br><br>
+    Essa indústria recebeu a encomenda de uma malha de proteção solar para ser aplicada em um vidro retangular de 5 m de largura por 9 m de comprimento. A medida de <b>d</b>, em milímetros, para que a taxa de cobertura da malha seja de 75% é:
+  </p>
+
+  <h4>Solução</h4>
+  <p>A malha é formada por tiras de 1 mm de largura, dispostas na vertical e na horizontal, com espaçamento de <strong>d − 1</strong> entre elas, resultando em uma malha de lado <strong>d</strong>.</p>
+
+  <p>Cada quadrado da malha tem área:</p>
+  <p><strong>Área total do quadrado = d²</strong></p>
+
+  <p>Em cada quadrado há uma faixa horizontal e uma vertical, ambas de 1 mm de largura. Porém, a área central de interseção (1 mm × 1 mm) é contada duas vezes, então:</p>
+  <p><strong>Área coberta por faixas = d·1 + d·1 − 1·1 = <input onchange="check(this, '2d')"> − <input onchange="check(this, '1')"> = <input onchange="check(this, '2d-1')"></strong></p>
+
+  <p>Assim, a taxa de cobertura T é:</p>
+  <p>
+    T = (2d − 1) / d²
+  </p>
+
+  <p>Queremos T = 75% = <input onchange="check(this, '3/4')"></p>
+
+  <p>Montando a equação:</p>
+  <p>
+    (2d − 1) / d² = 3/4<br>
+    ⇒ <input onchange="check(this, '4')">(2d − 1) = <input onchange="check(this, '3')">d²
+  </p>
+
+  <p>Desenvolvendo:</p>
+  <p>
+    8d − 4 = 3d² ⇒ <input onchange="check(this, '3')">d² − <input onchange="check(this, '8')">d + <input onchange="check(this, '4')"> = 0
+  </p>
+
+  <p>Resolvendo a equação quadrática:</p>
+  <p>
+    d = [8 ± √(64 − 4·3·4)] / 6 ⇒ d = [8 ± √(64 − <input onchange="check(this, '48')">)] / 6<br>
+    ⇒ d = [8 ± √<input onchange="check(this, '16')">] / 6 ⇒ d = [8 ± <input onchange="check(this, '4')">] / 6
+  </p>
+
+  <p>
+    ⇒ d = (8 + 4)/6 = <input onchange="check(this, '2')"> ou d = (8 − 4)/6 = <input onchange="check(this, '2/3')">
+  </p>
+
+  <p>Como d &gt; 1, a única solução viável é:</p>
+  <p><strong>d = <input onchange="check(this, '2')"> mm</strong></p>
+
+  <h4>Alternativas:</h4>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> 2</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> 1</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 11/3</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 8/3</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 4</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      const expected = correct.toString().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (value === expected) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'A';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! A resposta é d = 2 mm.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistemas Numéricos - Questão 22</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      line-height: 1.6;
+    }
+    input {
+      width: 80px;
+      text-align: center;
+      margin: 0 4px;
+    }
+    .option {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .circle {
+      width: 30px;
+      height: 30px;
+      background-color: #6c9ba4;
+      color: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .feedback {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #6c9ba4;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 4px;
+      display: inline-block;
+    }
+    a:hover {
+      background-color: #55808d;
+    }
+  </style>
+</head>
+<body>
+
+  <p>
+    <a href="questao21.html">🔹 Ir para Problema 21</a> |
+    <a href="questao23.html">🔹 Ir para Problema 23</a>
+  </p>
+
+  <h3>Problema 22:</h3>
+  <p>
+    Uma empresa de comunicação tem a tarefa de elaborar um material publicitário de um estaleiro para divulgar um novo navio equipado com um guindaste de 15 m de altura e uma esteira de 90 m de comprimento. No desenho desse navio, a representação do guindaste deve ter sua altura entre 0,5 cm e 1 cm, enquanto a esteira deve apresentar comprimento superior a 4 cm. Todo o desenho deverá ser feito em uma escala 1 : X.
+  </p>
+
+  <p>
+    <strong>Os valores possíveis para X são, apenas:</strong>
+  </p>
+
+  <h4>Solução:</h4>
+
+  <p>
+    A escala é do tipo \( 1 : X \), ou seja: 
+    <br>
+    \( \text{medida no desenho} = \frac{\text{medida real}}{X} \)
+  </p>
+
+  <p><strong>1. Guindaste:</strong></p>
+  <ul>
+    <li>Altura real: 15 m = <input onchange="check(this, '1500')"> cm</li>
+    <li>Altura no desenho entre 0,5 e 1 cm: \( 0,5 \leq \frac{1500}{X} \leq 1 \)</li>
+    <li>Multiplicando: <input onchange="check(this, '1500')"> ÷ <input onchange="check(this, '0.5')"> = <input onchange="check(this, '3000')"> e <input onchange="check(this, '1500')"> ÷ <input onchange="check(this, '1')"> = <input onchange="check(this, '1500')"></li>
+    <li>Portanto: \( 1500 < X < 3000 \)</li>
+  </ul>
+
+  <p><strong>2. Esteira:</strong></p>
+  <ul>
+    <li>Comprimento real: 90 m = <input onchange="check(this, '9000')"> cm</li>
+    <li>No desenho: \( \frac{9000}{X} > 4 \) ⇒ \( X < \) <input onchange="check(this, '2250')"></li>
+  </ul>
+
+  <p>
+    <strong>Condição final:</strong> 
+    <br>
+    \( 1500 < X < \) <input onchange="check(this, '2250')">
+  </p>
+
+  <p><strong>Resposta correta:</strong></p>
+
+  <div class="option" onclick="checkAnswer('A')"><div class="circle">A</div> X &gt; 1500</div>
+  <div class="option" onclick="checkAnswer('B')"><div class="circle">B</div> X &lt; 3 000</div>
+  <div class="option" onclick="checkAnswer('C')"><div class="circle">C</div> 1 500 &lt; X &lt; 2 250</div>
+  <div class="option" onclick="checkAnswer('D')"><div class="circle">D</div> 1 500 &lt; X &lt; 3 000</div>
+  <div class="option" onclick="checkAnswer('E')"><div class="circle">E</div> 2 250 &lt; X &lt; 3 000</div>
+
+  <div id="message" class="feedback"></div>
+
+  <script>
+    function check(input, correct) {
+      const value = input.value.trim().replace(',', '.');
+      input.nextElementSibling?.remove();
+      if (parseFloat(value) === parseFloat(correct)) {
+        input.style.backgroundColor = "#c6f6c6";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">✅</span>');
+      } else {
+        input.style.backgroundColor = "#fdd";
+        input.insertAdjacentHTML("afterend", '<span class="feedback">❌</span>');
+      }
+    }
+
+    function checkAnswer(letter) {
+      const correct = 'C';
+      const message = document.getElementById('message');
+      if (letter === correct) {
+        message.textContent = 'Correto! Os valores possíveis para X estão entre 1500 e 2250.';
+        message.style.color = 'green';
+      } else {
+        message.textContent = `Errado. A alternativa ${letter} não é a correta.`;
+        message.style.color = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>
